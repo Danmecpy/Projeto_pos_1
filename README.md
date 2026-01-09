@@ -100,7 +100,7 @@ Contribuições são bem-vindas! Por favor:
 
 **Daniel** 
 
-[text](https://www.linkedin.com/in/daniel-mec/)
+(https://www.linkedin.com/in/daniel-mec/)
 
 ---
 
