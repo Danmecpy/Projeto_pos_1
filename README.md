@@ -2,12 +2,14 @@
 
 ## 📋 Sobre o Projeto
 
-Sistema de processamento de dados implementando a arquitetura Medallion (Bronze-Silver-Gold), desenvolvido como projeto inicial para exploração e validação de pipelines de transformação de dados.
+Sistema de processamento de dados implementando a arquitetura Medallion (Bronze-Silver-Gold), desenvolvido como projeto inicial para exploração e validação de pipelines de transformação de dados utilizando DuckDB.
 
 ## 🚀 Tecnologias
 
 - **Python** - Linguagem principal
+- **DuckDB** - Banco de dados analítico
 - **Pandas** - Manipulação e análise de dados
+- **Jupyter Notebook** - Desenvolvimento interativo
 - **Poetry** - Gerenciamento de dependências
 - **VS Code** - Ambiente de desenvolvimento
 
@@ -36,9 +38,21 @@ poetry shell
 
 ## 💻 Uso
 
+O projeto utiliza notebooks Jupyter para processamento de dados em etapas:
+
 ```bash
-# Execute os scripts de processamento
-python scripts/main.py
+# Execute os notebooks na seguinte ordem:
+# 1. Ingestão de dados (Bronze)
+jupyter notebook scripts/ingestao.ipynb
+
+# 2. Refinamento de dados (Silver)
+jupyter notebook scripts/refinamento.ipynb
+
+# 3. Enriquecimento de dados (Gold)
+jupyter notebook scripts/enriquecimento.ipynb
+
+# Ou execute o pipeline completo
+jupyter notebook notebook/pipeline.ipynb
 ```
 
 ## 📁 Estrutura
@@ -46,14 +60,31 @@ python scripts/main.py
 ```
 Projeto_pos_1/
 ├── .venv/              # Ambiente virtual
-├── data/               # Camadas de dados
+├── data/               # Camadas de dados (Medallion Architecture)
 │   ├── bronze/         # Dados brutos
-│   ├── silver/         # Dados limpos
-│   └── gold/           # Dados agregados
-├── notebooks/          # Jupyter notebooks
-├── scripts/            # Scripts de processamento
+│   ├── silver/         # Dados limpos e transformados
+│   └── gold/           # Dados agregados e enriquecidos
+├── landing/            # Arquivos CSV de origem
+│   ├── z0019_1.csv
+│   └── z0019_2.csv
+├── notebook/           # Pipeline completo
+│   └── pipeline.ipynb
+├── scripts/            # Notebooks de processamento
+│   ├── ingestao.ipynb        # Camada Bronze
+│   ├── refinamento.ipynb     # Camada Silver
+│   ├── enriquecimento.ipynb  # Camada Gold
+│   └── dados_duckdb.db.wal   # DuckDB Write-Ahead Log
+├── pyproject.toml      # Configuração Poetry
 └── README.md
 ```
+
+## 🏗️ Arquitetura Medallion
+
+O projeto segue a arquitetura de três camadas:
+
+- **Bronze (Landing → Bronze)**: Ingestão de dados brutos dos arquivos CSV
+- **Silver (Bronze → Silver)**: Limpeza, validação e transformação dos dados
+- **Gold (Silver → Gold)**: Agregações e enriquecimento para análise de negócio
 
 ## 🤝 Contribuições
 
@@ -64,7 +95,6 @@ Contribuições são bem-vindas! Por favor:
 3. Commit suas mudanças (`git commit -m 'Adiciona MinhaFeature'`)
 4. Push para a branch (`git push origin feature/MinhaFeature`)
 5. Abra um Pull Request
-
 
 ## ✒️ Autor
 
