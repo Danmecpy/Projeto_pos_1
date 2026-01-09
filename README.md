@@ -68,7 +68,9 @@ Contribuições são bem-vindas! Por favor:
 
 ## ✒️ Autor
 
-**Daniel**
+**Daniel** 
+
+[text](https://www.linkedin.com/in/daniel-mec/)
 
 ---
 
